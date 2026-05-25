@@ -292,15 +292,15 @@ document.addEventListener('DOMContentLoaded', () => {
     /* ==========================================
        6. MAIN CONTACT FORM INTERACTIVE HANDLING
        ========================================== */
-    const mainContactForm = document.getElementById('main-contact-form');
+    const mainContactForm = document.getElementById('footer-contact-form');
     if (mainContactForm) {
         mainContactForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const submitBtn = mainContactForm.querySelector('button[type="submit"]');
-            const responseMsg = mainContactForm.querySelector('.contact-response-msg');
-            const nameVal = document.getElementById('contact-name').value.trim();
-            const phoneVal = document.getElementById('contact-phone').value.trim();
+            const responseMsg = mainContactForm.querySelector('.footer-response-msg');
+            const nameVal = document.getElementById('footer-name').value.trim();
+            const phoneVal = document.getElementById('footer-phone').value.trim();
 
             if (!nameVal || !phoneVal) {
                 showFeedback('Please fill out Name and Mobile fields.', 'error');
@@ -315,19 +315,19 @@ document.addEventListener('DOMContentLoaded', () => {
 
             const originalBtnText = submitBtn.textContent;
             submitBtn.disabled = true;
-            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin me-2"></i>Sending Message...`;
+            submitBtn.innerHTML = `<i class="fa-solid fa-circle-notch fa-spin me-2"></i>Submitting...`;
 
             setTimeout(() => {
                 submitBtn.disabled = false;
                 submitBtn.textContent = originalBtnText;
 
-                showFeedback(`<i class="fa-solid fa-circle-check me-2"></i>Thank you, ${nameVal}! Your enquiry is submitted. Home Decor Furnitures team will call you back in 15 minutes!`, 'success');
+                showFeedback(`<i class="fa-solid fa-circle-check me-2"></i>Thank you, ${nameVal}! Your request has been submitted successfully. Home Decor Furnitures team will contact you back in 15 minutes!`, 'success');
                 mainContactForm.reset();
             }, 1200);
 
             function showFeedback(text, type) {
                 responseMsg.innerHTML = text;
-                responseMsg.className = `contact-response-msg mt-3 text-center ${type}`;
+                responseMsg.className = `footer-response-msg mt-3 text-center ${type}`;
                 responseMsg.classList.remove('d-none');
 
                 if (type === 'success') {
